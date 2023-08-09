@@ -1,0 +1,128 @@
+---
+title: "High School Student Science and Math Self-Beliefs Association with College
+  STEM Major Choice"
+author: "Megan Byers and Nathan Orecchio"
+date: "2023-05-02"
+output:
+  pdf_document: default
+  word_document: default
+subtitle: 'EDUC 784: Intermediate Statistics – Final Project'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+**Introduction**
+
+STEM employment opportunities are expected to grow at more than double the rate of non-STEM opportunities over the next ten years while the gap in qualified employees to secure these positions continues to widen (U.S. Bureau of Labor Statistics, 2022). Thus, the factors that contribute to students' choice of pursuing a STEM-related college major, a required prerequisite for pursuing a STEM career, have become an important question. While student STEM achievement is a known key factor leading to students choosing a STEM major, recent studies also demonstrate the impact of student STEM identity and self-efficacy on this choice (Zhang et al., 2021). A study by Means and colleagues also addressed the relationship between school type -- the degree to which STEM-related supports were provided -- and whether students chose to pursue STEM majors (Means et al., 2018).
+
+In this analysis, we aim to build on the previous work and address the following research questions:
+
+1.  How do student STEM identity and self-efficacy beliefs affect their odds of choosing a STEM major, when controlling for STEM achievement and school characteristics?
+
+2.  What is the likelihood of a student considering a STEM major based on their school locale and beliefs about their STEM identity, when controlling for achievement in STEM courses, school type, and school region?
+
+**Methods**
+
+*Sample*
+
+The analysis is based on data from the High School Longitudinal Study that was conducted by the U.S. Department of Education (United States Department of Education, 2009-2013). The sample collected for the study was nationally representative and included over 23,000 ninth graders from 944 schools in 2009. Follow-up data were collected for the same students in their eleventh-grade year and during college in 2012 and 2016, respectively. After omitting missing data for the variables of interest, the data used for the model discussed in the next section included 9,620 observations.
+
+*Measures*
+
+The variables used for this analysis fall into three categories -- high school characteristics, student achievement, and student self-beliefs. The high school characteristics category includes the categorical variables 1) X2CONTROL which identifies a school as being public or private/Catholic, 2) X2LOCALE while represents where a school is located as either city, suburb, town, or rural, and 3) X2REGION which represents the region where the school is located as either North, South, Midwest, or West. The second category of variables includes X3TGPASTEM which represents students' cumulative GPA in high school STEM courses ranging from 0.0-4.0 in intervals of 0.5. The final category of the standardized (mean of zero and standard deviation of one) continuous variables 1) X2SCIID which represents students self-reported science identity in eleventh grade, 2) X2SCIEFF which represents students self-reported science self-efficacy in eleventh grade, 3) X2MTHID which represents students self-reported math identity in eleventh grade, and 4) X2MTHEFF which represents students self-reported math self-efficacy in eleventh grade.
+
+**Analytical Approach**
+
+A logistic regression model framework was chosen for this analysis to determine the likelihood of students choosing a STEM major. Predictors were added to the model hierarchically in four blocks. Blocks one through three address research question one. Block one regressed S3FIELD_STEM on the school variables X2CONTROL, X2LOCALE, X2REGION. The STEM achievement variable X3TGPASTEM was added into the second block. Lastly, the science and math Identity and self-efficacy variables were added to the third block. To address research question two, we input one more block that included X2LOCALE as an interaction. To see if including X2LOCALE as an interaction added more model fit, we calculated McFadden's Pseudo-R-Squared for model 3, compared to Block 4. When determining the significance of the coefficients in our model, we used the exponentiated confidence intervals and odds ratios. Further, to test the model fit, we conducted a Hosmer-Lemeshow test. Lastly, we conducted a Likelihood Ratio Test for blocks 3 and 4.
+
+**Results**
+
+The final model does not meet the assumptions of logistic regression, as seen in the Hosmer-Lemeshow test (p\<.05); however, for the sake of completing this assignment, we will continue with the results as if the assumptions were met.
+
+Research Question #1:
+
+Of the science and math student self-belief predictors included in the model, only science identity, math identity, and math self-efficacy were statistically significant predictors of the odds of a student choosing to pursue a STEM major at a 95% confidence level. When controlling for school characteristics and student performance, the odds of a student choosing a STEM major increase by 85 percent for every one standard deviation unit increase in that student's science identity; 54.9 percent for every one standard deviation unit increase in that student's math identity; and 14.2 percent for every one standard deviation unit increase in that student's math self-efficacy. Adding the STEM identity and self-efficacy predictors to our model added 14.7% more fit to our model, compared to a model without predictors.
+
+Research Question #2:
+
+School locale is not a significant moderator of the relationship between student science and math identity or self-efficacy and their odds of choosing a STEM major. In addition, adding the interaction term did increase model fit by only half a percentage point (p\<.05).
+
+<center>
+
+![Stagazer table 1 of 2](final_project_table_1.png){width="600px"}
+
+<center>
+
+![Stargazer table 2 of 2](final_project_table_2.png){width="600px"}
+
+**Discussion**
+
+Students' positive self-beliefs, specifically those related to science and math identity and math self-efficacy, increase their odds of choosing a college STEM major. Interestingly, science self-efficacy is not a significant predictor of the odds of a student choosing a college STEM major. Additionally, school locale does not significantly moderate the relationship between students' self-beliefs and their odds of choosing a STEM major -- meaning that students with the same self-belief levels attending high schools in rural, suburban, town, or urban areas have the same odds of choosing a STEM major.
+
+The results show that future work could involve investigating the relationship between different interventions to improve student self-beliefs in science and math, which would positively affect their lives, not just their likelihood of choosing a STEM major. To further inform these interventions, it would also be interesting to explore the relationship between student math and science self-efficacy and their math and science identity. Since there is not a significant interaction between school locale and students' self-beliefs, it would be ideal to implement any interventions across varying school location types as opposed to limiting implementation to specific ones. Lastly, it could be beneficial to examine other moderators of students' science and math self-beliefs such as gender and race as well as their impact on the odds of students' choosing a STEM major.
+
+**References**
+
+Means, B., Wang, H., Wei, X., Iwatani, E., & Peters, V. (2018). Broadening Participation in STEM College Majors: Effects of Attending a STEM-Focused High School. AERA Open, 4(4). <https://doi.org/10.1177/2332858418806305>
+
+Zhang, J., Bohrnstedt, G., Zheng, X., Bai, Y., Yee, D., and Broer, M. (2021). Choosing a College STEM Major: The Roles of Motivation, High School STEM Coursetaking, NAEP Mathematics Achievement, and Social Networks. [AIR-NAEP Working Paper #2021-02]. Washington, DC: American Institutes for Research
+
+U.S. Bureau of Labor Statistics. (2022, September 8). Employment in STEM occupations. U.S. Bureau of Labor Statistics. Retrieved October 16, 2022, from <https://www.bls.gov/emp/tables/stememployment.htm#2>
+
+United States Department of Education. Institute of Education Sciences. National Center for Education Statistics. High School Longitudinal Study, 2009-2013 [United States]. Inter-university Consortium for Political and Social Research [distributor], 2016-05-12. <https://doi.org/10.3886/ICPSR36423.v1>
+
+**Appendix**
+
+```{r}
+# Load dataset
+load("36423-0002-Data.rda")
+
+#Create new data frame with only the variables of interests
+subdat = subset(da36423.0002, select = c(S3FIELD_STEM, X2CONTROL, X2LOCALE, X2REGION, X3TGPASTEM, X2SCIID, X2SCIEFF, X2MTHID, X2MTHEFF))
+
+#Omit missing data
+subdat = na.omit(subdat)
+
+attach(subdat)
+
+#Scale GPA to have a mean of zero and a standard deviation of one
+X3TGPASTEM <- scale(X3TGPASTEM)
+
+# First model with Region, School Type, and Locale controls
+# Outcome variable is binary coding of STEM Major considerations (Considering STEM major = 1; Not considering STEM major = 0)
+mod1 = glm(S3FIELD_STEM ~ X2CONTROL + X2LOCALE + X2REGION, family = "binomial")
+
+# Second model including cumulative GPA for STEM courses
+mod2 = glm(S3FIELD_STEM ~ X2CONTROL + X2LOCALE + X2REGION + X3TGPASTEM, family = "binomial")
+
+# Third model including science and math identity and self-efficacy (both standardized variables with a mean of zero and standard deviation of 1)
+mod3 = glm(S3FIELD_STEM ~ X2CONTROL + X2LOCALE + X2REGION + X3TGPASTEM + X2SCIID + X2SCIEFF + X2MTHID + X2MTHEFF, family = "binomial")
+
+# Fourth model with school locale interaction
+mod4 = glm(S3FIELD_STEM ~ (X2CONTROL + X2REGION + X3TGPASTEM + X2SCIID + X2SCIEFF + X2MTHID + X2MTHEFF)*X2LOCALE, family = "binomial")
+
+#Hosmer-Lemeshow test of logistic model assumption
+HLtest <- generalhoslem::logitgof(obs = S3FIELD_STEM, exp = fitted(mod3), g = 10)
+HLtest
+
+#McFadden's mod3 vs mod0 (with no predictors)
+mod0 <- glm(S3FIELD_STEM ~ 1, family = "binomial")
+R_squared_1 <- (1 - mod3$deviance/mod0$deviance)
+R_squared_1
+
+#McFadden's mod4 vs mod3 (model fit added by model 4 with the interaction term)
+R_squared_2 <- (1 - mod4$deviance/mod3$deviance)
+R_squared_2
+
+#Likelihood ratio mod3 vs. mod4
+lmtest::lrtest(mod3, mod4)
+
+#Model 3 regression coefficients (exponentiated odds ratios and respective confideence intervals)
+exp(cbind(OR = coef(mod3), confint(mod3)))
+
+#table including regression coefficients and confident intervals for each block of the heirarchical model
+# stargazer::stargazer(mod1, mod2, mod3, mod4, type = 'html', omit = "Constant", out="final_project_table.html", apply.coef = exp, star.char = " ", ci = TRUE)
+
+```
